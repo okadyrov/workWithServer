@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import GotService from '../../services/gotService';
-import './randomChar.css';
 import gotService from '../../services/gotService';
+import './randomChar.css';
+
 export default class RandomChar extends Component {
 
     constructor(){
@@ -9,7 +9,7 @@ export default class RandomChar extends Component {
         this.updateChar();
     }
 
-    gotService = new GotService();
+    gotService = new gotService();
 
     state = {
         name: null,
@@ -21,7 +21,7 @@ export default class RandomChar extends Component {
 
     updateChar() {
         const id = 130;
-        this.gotService.getAllCharacters(id)
+        this.gotService.getCharacter(id)
             .then((char) => {
                 this.setState({
                     name: char.name,
@@ -30,7 +30,8 @@ export default class RandomChar extends Component {
                     died: char.died,
                     culture: char.culture
                 })
-            });
+            })
+        
     }
     render() {
 
